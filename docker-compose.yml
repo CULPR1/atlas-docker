@@ -36,7 +36,7 @@
 services:
   user_server:
     build: .
-    command: uvicorn user_main:app --host 0.0.0.0 --port 8000
+    command: uvicorn user_main:app --host 127.0.0.1 --port 8000
     ports:
       - "8000:8000"
     env_file:
@@ -47,7 +47,7 @@ services:
 
   seller_server:
     build: .
-    command: uvicorn seller_main:app --host 0.0.0.0 --port 8001
+    command: uvicorn seller_main:app --host 127.0.0.1 --port 8001
     ports:
       - "8001:8001"
     env_file:
