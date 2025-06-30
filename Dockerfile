@@ -26,7 +26,7 @@ RUN apt-get update && \
 WORKDIR /app
 
 # Proper git clone with verification
-RUN git clone buyer-edits https://github.com/CULPR1/atlas-fastapi.git .
+RUN git clone --branch buyer-edits https://github.com/CULPR1/atlas-fastapi.git .
 
 
 
