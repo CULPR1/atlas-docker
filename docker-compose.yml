@@ -1,36 +1,4 @@
 
-# # services:
-# #   user_server:
-# #     build: .    #Dockerfile (in same directory)
-# #     command: uvicorn user_main:app --host 0.0.0.0 --port 8000
-# #     ports:
-# #       - "8000:8000"       
-
-# #     working_dir: /app
-# # # Maps port 8000 on your host machine (EC2) to port 8000 in the container.
-
-# # # Format: "HOST_PORT:CONTAINER_PORT".
-
-# # # Allows external access via http://<EC2-IP>:8000.
-# #     volumes:
-# #       - .:/app
-
-# #     environment:
-# #       - PYTHONUNBUFFERED=1
-
-
-
-# #   seller_server:
-# #     build: .    #Dockerfile (in same directory)
-# #     command: uvicorn seller_main:app --host 0.0.0.0 --port 8001
-# #     ports:
-# #       - "8001:8001" 
-# #     working_dir: /app      
-# #     volumes:
-# #       - .:/app
-
-# #     environment:
-# #       - PYTHONUNBUFFERED=1
   
 
 services:
@@ -55,21 +23,15 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
 
-# services:
-#   user_server:
-#     build: .
-#     command: sh -c "echo 'Python path: $PYTHONPATH'; ls -la; uvicorn user_main:app --host 0.0.0.0 --port 8000"
-#     ports:
-#       - "8000:8000"
-#     working_dir: /app
-#     environment:
-#       - PYTHONPATH=/app
 
-#   seller_server:
-#     build: .
-#     command: sh -c "echo 'Python path: $PYTHONPATH'; ls -la; uvicorn seller_main:app --host 0.0.0.0 --port 8001"
-#     ports:
-#       - "8001:8001"
-#     working_dir: /app
-#     environment:
-#       - PYTHONPATH=/app
+  
+  buyer_server:
+    build: .
+    command: uvicorn buyer_main:app --host 0.0.0.0 --port 8002
+    ports:
+      - "8002:8002"
+    env_file:
+      - ./.env
+    environment:
+      - PYTHONUNBUFFERED=1
+
